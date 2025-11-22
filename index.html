@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nabeel Mustafa — QA Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-alt: #0b0b0b;
+      --card: #0f0f10;
+      --border: #232329;
+      --ink: #f9fafb;
+      --muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0 14px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-name {
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .brand-role {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+      color: var(--muted);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: #ffffff;
+      transition: width 0.18s ease-out;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 40px 0 32px;
+    }
+
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 42px);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin: 0 0 16px;
+    }
+
+    .hero-body {
+      max-width: 700px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-body strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .hero-tile {
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 96px;
+      transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, background 0.16s ease-out, border-color 0.16s ease-out;
+      cursor: pointer;
+    }
+
+    .hero-tile h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-tile p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-tile span.icon {
+      align-self: flex-end;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    .hero-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+      background: #111111;
+      border-color: #ffffff;
+    }
+
+    /* Sections */
+    section {
+      padding: 34px 0 0;
+    }
+
+    .section-panel {
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: #050607;
+      padding: 24px 22px 26px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin: 0 0 10px;
+    }
+
+    .section-sub {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Work grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .work-card {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #050505;
+      padding: 16px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .work-card h3 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .work-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .work-links {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag-link {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .tag-link:hover {
+      border-color: #ffffff;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-block {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: #050505;
+      padding: 14px 14px 16px;
+    }
+
+    .skill-block h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .skill-block p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Contact buttons */
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 9px 14px;
+      font-size: 13px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.16s ease-out, color 0.16s ease-out, border-color 0.16s ease-out, transform 0.12s ease-out;
+    }
+
+    .btn:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    footer {
+      padding: 30px 0 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 2px 0;
+    }
+
+    @media (max-width: 800px) {
+      nav { display: none; }
+      .shell { padding: 16px 16px 40px; }
+      .hero { padding-top: 24px; }
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      .section-panel { padding: 18px 16px 20px; border-radius: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div class="brand">
+          <div class="brand-name">Nabeel Mustafa</div>
+          <div class="brand-role">Junior QA Engineer — Manual &amp; Automation</div>
+        </div>
+        <nav>
+          <a href="#work">Work</a>
+          <a href="#skills">Skills</a>
+          <a href="#certification">Certification</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-kicker">QA Portfolio — Selected Work &amp; Skills</div>
+          <h1 class="hero-title">Hey, I'm Nabeel Mustafa</h1>
+          <p class="hero-body">
+            I am a dedicated Junior QA Engineer (Manual &amp; Automation) with experience in functional testing,
+            regression cycles, automation scripting, API validation, and test documentation.
+            <strong>Open to onsite, hybrid, and remote roles with flexible hours.</strong>
+            Comfortable collaborating in English on a daily basis and quickly adapting to new tools.
+          </p>
+
+          <div class="hero-grid">
+            <a class="hero-tile" href="#work">
+              <div>
+                <h3>Work</h3>
+                <p>Steam launcher pack, automation suite, API collection, and SQL scenarios.</p>
+              </div>
+              <span class="icon">↘</span>
+            </a>
+            <a class="hero-tile" href="#skills">
+              <div>
+                <h3>Skills</h3>
+                <p>Manual testing, automation, API testing, SQL, and QA documentation.</p>
+              </div>
+              <span class="icon">↘</span>
+            </a>
+            <a class="hero-tile" href="#certification">
+              <div>
+                <h3>Certification</h3>
+                <p>ICS Academy program in manual and automation testing.</p>
+              </div>
+              <span class="icon">↘</span>
+            </a>
+            <a class="hero-tile" href="#contact">
+              <div>
+                <h3>Contact me</h3>
+                <p>Email, LinkedIn, WhatsApp, and phone for opportunities.</p>
+              </div>
+              <span class="icon">↘</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- WORK -->
+        <section id="work">
+          <div class="section-panel">
+            <h2 class="section-title">Work</h2>
+            <p class="section-sub">
+              Selected QA projects combining manual test design, automation with Selenium &amp; PyTest, API testing in Postman,
+              and SQL validation scenarios.
+            </p>
+
+            <div class="work-grid">
+              <article class="work-card">
+                <h3>Steam Launcher QA Pack</h3>
+                <p>
+                  End-to-end QA pack for a desktop launcher: STD / test design, detailed test cases, and regression coverage.
+                </p>
+                <div class="work-links">
+                  <a class="tag-link" href="Steam_Launcher_STD_Enhanced_NabeelMustafa_v2.xlsx" target="_blank">STD (Excel)</a>
+                  <a class="tag-link" href="TC_UI_001_Get_Started_Failed_Test_Case.pdf" target="_blank">UI Test Case</a>
+                  <a class="tag-link" href="TC_REG_001_Registration_Test_Case.pdf" target="_blank">Registration Test Case</a>
+                  <a class="tag-link" href="TC_BOOK_001_Test_Case.pdf" target="_blank">Book Now Test Case</a>
+                  <a class="tag-link" href="Web_Search_Test_Case.pdf" target="_blank">Search Test Case</a>
+                </div>
+              </article>
+
+              <article class="work-card">
+                <h3>Selenium + PyTest Automation</h3>
+                <p>
+                  Browser automation suite for the same launcher flows, using fixtures, assertions, and screenshots
+                  for failed steps.
+                </p>
+                <div class="work-links">
+                  <a class="tag-link" href="get_started_script.pdf" target="_blank">Get Started Script</a>
+                  <a class="tag-link" href="Seleinum_REG_001_TEST_Code.pdf" target="_blank">Registration Script</a>
+                  <a class="tag-link" href="test_book_now_script.pdf" target="_blank">Book Now Script</a>
+                  <a class="tag-link" href="Selenium_Search_Test_Code.pdf" target="_blank">Search Script</a>
+                </div>
+              </article>
+
+              <article class="work-card">
+                <h3>API Testing — Postman</h3>
+                <p>
+                  Positive &amp; negative flows, status codes, schema checks, and error handling using Postman collections.
+                </p>
+                <div class="work-links">
+                  <a class="tag-link" href="Nabeel_API_Testing_Collection.json" target="_blank">Postman Collection</a>
+                </div>
+              </article>
+
+              <article class="work-card">
+                <h3>SQL Test Scenarios</h3>
+                <p>
+                  Data integrity checks, JOIN validations, CRUD operations, and negative test cases for realistic QA datasets.
+                </p>
+                <div class="work-links">
+                  <a class="tag-link" href="SQL_Test_Scenarios_Nabeel.pdf" target="_blank">SQL Test Pack (PDF)</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+          <div class="section-panel">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-sub">
+              Core QA skills across manual testing, automation, API testing, SQL, documentation, and collaboration.
+            </p>
+            <div class="skills-grid">
+              <div class="skill-block">
+                <h3>Manual testing</h3>
+                <p>
+                  STP / STD / STR, exploratory testing, regression cycles, edge cases, bug reporting, and clear defect
+                  reproduction steps.
+                </p>
+              </div>
+              <div class="skill-block">
+                <h3>Automation</h3>
+                <p>
+                  Selenium WebDriver, PyTest, Python and Java basics, page interactions, assertions, fixtures, and
+                  running suites locally or remotely.
+                </p>
+              </div>
+              <div class="skill-block">
+                <h3>API testing</h3>
+                <p>
+                  Postman collections, positive and negative scenarios, headers and payloads, JSON schema checks, and
+                  status-code validation.
+                </p>
+              </div>
+              <div class="skill-block">
+                <h3>SQL &amp; tools</h3>
+                <p>
+                  SELECT / JOIN / GROUP BY, CRUD scenarios, data validation, plus JIRA, TestRail-style test cases, Git,
+                  and remote collaboration.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CERTIFICATION -->
+        <section id="certification">
+          <div class="section-panel">
+            <h2 class="section-title">Certification</h2>
+            <p class="section-sub">
+              Formal QA training focused on both manual and automation foundations.
+            </p>
+            <div class="work-card">
+              <h3>ICS Academy — QA Manual &amp; Automation</h3>
+              <p>
+                150 academic hours covering manual testing, test design documentation, SQL, and practical automation
+                basics with Selenium and Python.
+              </p>
+              <div class="work-links">
+                <a class="tag-link" href="נביל מוסטפה.pdf" target="_blank">View Certificate (PDF)</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+          <div class="section-panel">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-sub">
+              Freelance-style QA work on personal projects that simulate production flows and real regression packs.
+            </p>
+            <div class="work-card">
+              <h3>Freelance QA Engineer — Remote</h3>
+              <p>
+                Worked on multiple practical QA projects including steam-like launchers, ERP-style flows, API testing,
+                SQL validation, and Selenium automation. Created complete documentation and reproducible defects,
+                working remotely with flexible hours and communicating in English on a daily basis.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <div class="section-panel">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-sub">
+              Open to onsite, hybrid, or remote QA roles with flexible hours. Feel free to reach out in English, Arabic, or Hebrew.
+            </p>
+            <div class="contact-actions">
+              <a class="btn" href="mailto:nabeelmuu421@gmail.com">Email</a>
+              <a class="btn" href="https://www.linkedin.com/in/nabeel-asmr-627652250" target="_blank">LinkedIn</a>
+              <a class="btn" href="https://wa.me/972543695488" target="_blank">WhatsApp</a>
+              <a class="btn" href="tel:+972543695488">Phone</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>Open to onsite, hybrid, or remote roles — based in Jerusalem, Israel.</p>
+        <p>&copy; 2025 Nabeel Mustafa — Junior QA Engineer (Manual &amp; Automation).</p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

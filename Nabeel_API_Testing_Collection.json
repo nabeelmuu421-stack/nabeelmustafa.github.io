@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Nabeel_API_Testing_Collection",
+    "_postman_id": "qa-api-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET Course List",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://www.qaonlineacademy.com/api/courses",
+          "protocol": "https",
+          "host": [
+            "www",
+            "qaonlineacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "courses"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET Course Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://www.qaonlineacademy.com/api/courses/1",
+          "protocol": "https",
+          "host": [
+            "www",
+            "qaonlineacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "courses",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"firstname\": \"Nabeel\", \"lastname\": \"Asmr\", \"email\": \"test@example.com\", \"phone\": \"0123456789\"}"
+        },
+        "url": {
+          "raw": "https://www.qaonlineacademy.com/api/register",
+          "protocol": "https",
+          "host": [
+            "www",
+            "qaonlineacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "register"
+          ]
+        }
+      }
+    }
+  ]
+}
